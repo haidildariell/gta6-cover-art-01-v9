@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tideline Cover Press — VELVET TIDE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <strong>TIDELINE COVER PRESS</strong>
+    <span>Turn any photo into GTA-style cover art — offline, in your browser.</span>
+  </div>
+  <div class="top-actions">
+    <label class="size-label">Export size
+      <select id="sizeSelect">
+        <option value="1920x1080" selected>1920 × 1080 · Wide</option>
+        <option value="1080x1080">1080 × 1080 · Square</option>
+        <option value="1080x1350">1080 × 1350 · Portrait</option>
+      </select>
+    </label>
+    <button id="exportBtn" class="primary" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="workbench">
+  <section class="preview-pane">
+    <canvas id="stage" width="960" height="540" aria-label="Cover preview"></canvas>
+    <p class="hint">Live preview — the cover updates as you edit. One hard sunset grade is applied to every panel.</p>
+  </section>
+
+  <aside class="controls">
+    <section class="panel">
+      <h2>Cast — pick a panel, swap its photo</h2>
+      <div id="castList" class="cast-list"></div>
+      <div class="cast-edit">
+        <div class="cast-head"><strong id="castName">THE BOSS</strong>
+          <span class="cast-btns">
+            <label class="mini-btn">Replace photo
+              <input id="photoInput" type="file" accept="image/*" hidden>
+            </label>
+            <button id="resetPhoto" class="mini-btn" type="button">Sample</button>
+            <button id="resetCrop" class="mini-btn" type="button">Reset crop</button>
+          </span>
+        </div>
+        <label class="slider">Zoom <input id="zoomRange" type="range" min="1" max="8" step="0.05" value="1.1"> <output id="zoomVal">1.10×</output></label>
+        <label class="slider">Face left–right <input id="cxRange" type="range" min="0" max="1" step="0.01" value="0.5"> <output id="cxVal">50%</output></label>
+        <label class="slider">Face up–down <input id="cyRange" type="range" min="0" max="1" step="0.01" value="0.4"> <output id="cyVal">40%</output></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Lettering</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" value="VELVET TIDE" maxlength="24">
+      </label>
+      <label class="field">Script subtitle
+        <input id="scriptInput" type="text" value="salt on the wind" maxlength="40">
+      </label>
+      <label class="field">Tagline
+        <input id="taglineInput" type="text" value="SEVEN STRANGERS · ONE BURNING COAST · EVERY DEBT COMES DUE" maxlength="80">
+      </label>
+      <label class="field">Press quote
+        <input id="quoteInput" type="text" value="EVERY FRAME DRIPS WITH SUNLIGHT AND SIN" maxlength="80">
+      </label>
+      <label class="field">Gazette
+        <input id="gazetteInput" type="text" value="The Coral Bay Chronicle" maxlength="40">
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>Look</h2>
+      <label class="field">Grade
+        <select id="gradeSelect">
+          <option value="sunset" selected>Sunset Hard — one golden grade, every panel</option>
+          <option value="golden">Golden Hour — softer warm</option>
+          <option value="neon">Neon Dusk — pink / teal nights</option>
+        </select>
+      </label>
+      <label class="field">Layout
+        <select id="layoutSelect">
+          <option value="mosaic" selected>Mosaic — seven strangers, hero boss</option>
+          <option value="single">Single — one hero photo, full-bleed</option>
+        </select>
+      </label>
+      <p class="fine">Photos never leave this machine. Fonts are Anton &amp; Pacifico (SIL Open Font License), shipped under app/fonts. Export writes a PNG at the size above — 1920×1080, 1080×1080 or 1080×1350.</p>
+    </section>
+  </aside>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
